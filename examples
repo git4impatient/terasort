@@ -15,7 +15,7 @@ hadoop fs -rm -r terasort-out
 hadoop fs -rm -r teravalid-out
 #hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teragen -Dmapred.map.tasks=16 -Dmapred.job.priority="VERY_LOW" $ROWS terasort-input
 # ./lib/hadoop-0.20-mapreduce/hadoop-examples.jar
-hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teragen -Dmapred.map.tasks=16 -Dmapred.job.priority="VERY_LOW" $ROWS terasort-input
-hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar terasort  -Dmapred.reduce.tasks=16  terasort-input terasort-out
-hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teravalidate  -Dmapred.job.priority="HIGH" terasort-out teravalid-out
+time hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teragen -Dmapred.map.tasks=16 -Dmapred.job.priority="VERY_LOW" $ROWS terasort-input
+time hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar terasort  -Dmapred.reduce.tasks=16  terasort-input terasort-out
+time hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teravalidate  -Dmapred.job.priority="HIGH" terasort-out teravalid-out
 

@@ -1,0 +1,21 @@
+# (c) copyright 2012 martin lurie - sample code not supported
+# all rights reserved   may not be copied or published without permission
+
+# 1 meg ROWS=10000
+# 1 gig ROWS=10000000
+# 100 gig ROWS=1000000000
+# 500 gig ROWS=5000000000
+# 1 tbyte ROWS=10000000000
+# 1 meg ROWS=10000
+# 1 meg ROWS=10000
+# 1 meg ROWS=10000
+export ROWS=1000
+hadoop fs -rm -r terasort-input
+hadoop fs -rm -r terasort-out
+hadoop fs -rm -r teravalid-out
+#hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teragen -Dmapred.map.tasks=16 -Dmapred.job.priority="VERY_LOW" $ROWS terasort-input
+# ./lib/hadoop-0.20-mapreduce/hadoop-examples.jar
+hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teragen -Dmapred.map.tasks=16 -Dmapred.job.priority="VERY_LOW" $ROWS terasort-input
+hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar terasort  -Dmapred.reduce.tasks=16  terasort-input terasort-out
+hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teravalidate  -Dmapred.job.priority="HIGH" terasort-out teravalid-out
+

@@ -2,4 +2,4 @@ bare metal 5 nodes # teragen 6:24 # terasort 4:34  ROWS=1000000000 TASKS=100
 bare metal 6 nodes # teragen 1:55 # terasort 2:40  ROWS=1000000000 TASKS=200
 bare metal 6 nodes # teragen 15:44 # terasort 18min 22sec  ROWS=10000000000 TASKS=200  1TByte, 1 gig/second per node = 100mBytes/second per disk
 cloud vitual 3 nodes 100 gigROWS=1000000000 tasks 16 # teragen 5:30 # terasort 29:25 # 
-cloud vitual 3 nodes 100 gigROWS=1000000000 tasks 200 # teragen 4:33 # 
+cloud vitual 3 nodes 100 gigROWS=1000000000 tasks 200 # teragen 4:33 # terasort 15:24

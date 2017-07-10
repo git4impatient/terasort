@@ -19,3 +19,19 @@ time hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examp
 time hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar terasort  -Dmapred.reduce.tasks=16  terasort-input terasort-out
 time hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teravalidate  -Dmapred.job.priority="HIGH" terasort-out teravalid-out
 
+exit
+
+
+# from Vineet K.
+
+# example f# The following will 1 TB file, 24 containers, each with 4GB =24*4=96GB Max Container memory
+
+# cd /opt/cloudera…./lib/
+
+#hadoop jar hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=24 -Dmapreduce.map.memory.mb=4096 -Dmapreduce.map.memory.mb=4096 10000000 /user/cloudera/tgen1TB
+#hadoop jar hadoop-mapreduce-examples.jar terasort /user/cloudera/tgen1TB /user/cloudera/tshort
+#hadoop jar hadoop-mapreduce-examples.jar teravalidate /user/cloudera/tshort /user/cloudera/tvalidate
+
+# from Vineet K.
+
+

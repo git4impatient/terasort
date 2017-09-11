@@ -9,10 +9,20 @@
 # 1 meg ROWS=10000
 # 1 meg ROWS=10000
 # 1 meg ROWS=10000
-export ROWS=1000
+export ROWS=100000
 hadoop fs -rm -r terasort-input
 hadoop fs -rm -r terasort-out
 hadoop fs -rm -r teravalid-out
+
+time hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teragen -Dmapred.map.tasks=16  $ROWS terasort-input
+time hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar terasort  -Dmapred.reduce.tasks=16  terasort-input terasort-out
+time hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teravalidate   terasort-out teravalid-out
+
+exit
+
+
+
+
 #hadoop jar /usr/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teragen -Dmapred.map.tasks=16 -Dmapred.job.priority="VERY_LOW" $ROWS terasort-input
 # ./lib/hadoop-0.20-mapreduce/hadoop-examples.jar
 time hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teragen -Dmapred.map.tasks=16 -Dmapred.job.priority="VERY_LOW" $ROWS terasort-input

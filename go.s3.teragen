@@ -1,0 +1,3 @@
+# 100 gigabytes approx 9 minutes to gen and 27 min to sort on three  d2.xlarge aws nodes
+export ROWS=50000000
+time hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teragen -Dmapred.map.tasks=16 $ROWS 's3a://yours3buckethere/writetest/tsort5node50mrowsa'

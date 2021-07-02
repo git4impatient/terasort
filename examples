@@ -17,6 +17,9 @@ hadoop fs -rm -r teravalid-out
 
 # new syntax for Hadoop 3 CDP7
 yarn jar /opt/cloudera/parcels/CDH/jars/hadoop-examples.jar teragen -Dmapred.map.tasks=4 1000 /tmp/teragen.out 
+yarn jar /opt/cloudera/parcels/CDH/jars/hadoop-examples.jar terasort  -Dmapred.reduce.tasks=16  /tmp/teragen.out /tmp/terasort.out 
+yarn jar /opt/cloudera/parcels/CDH/jars/hadoop-examples.jar teravalidate   /tmp/terasort.out /tmp/teravalid.out
+
 # 
 
 time hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-0.20-mapreduce/hadoop-examples.jar teragen -Dmapred.map.tasks=16  $ROWS terasort-input
